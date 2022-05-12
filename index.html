@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Quiz App</title>
 </head>
+
+
 <body>
+    <header>
+        <h2 class="displayHighScore">View High Scores</h2>
+        <h1>JavaScript Quiz Game</h1>
+        <h2 class="timeRemaining">Time remaining: 
+            <div id="timeRemaining"></div>
+        </h2>
+    </header>
+    <div class="container">
+        <div id="questionContainer" class="hide">
+            <div id="question" class="question">
+                Question 1: 
+                <div id="answer-btns" class="answer-btns">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>   
+            
+        </div>
+        <div class="start-btn">
+            <button class="pressStart btn">Start</button>
+        </div>
+    </div>
     
+
+    <script src="assets/script.js"></script>
 </body>
 </html>
