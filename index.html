@@ -11,31 +11,30 @@
 
 <body>
     <header>
-        <h2 class="displayHighScore">View High Scores</h2>
+        <button class="highScore">View High Scores</button>
         <h1>JavaScript Quiz Game</h1>
-        <h2 class="timeRemaining">Time remaining: 
-            <div id="timeRemaining"></div>
-        </h2>
+        <div id="timer"></div>
     </header>
     <div class="container">
-        <div id="questionContainer" class="hide">
-            <div id="question" class="question">
-                Question 1: 
-                <div id="answer-btns" class="answer-btns">
-                    <button class="btn">Answer 1</button>
-                    <button class="btn">Answer 2</button>
-                    <button class="btn">Answer 3</button>
-                    <button class="btn">Answer 4</button>
-                </div>
-            </div>   
-            
+       
+        <div id="question" class="question hide"></div>
+
+        <div id="answers" class="answers hide"></div> 
+       
+        <div class="startButton">
+            <button id="start-btn" class="pressStart btn">Start</button>
         </div>
-        <div class="start-btn">
-            <button class="pressStart btn">Start</button>
+
+        <div id="showHighScores" class="hide">
+            <span id="scoreDisplay"></span>
+            <input type="text" name="initials" id="initials" />
+            <button id="submitScore" class="submit">Submit Score</button>
         </div>
+
     </div>
     
-
     <script src="assets/script.js"></script>
 </body>
 </html>
+
+
