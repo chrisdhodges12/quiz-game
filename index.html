@@ -10,7 +10,10 @@
 
 <body>
     <header>
-        <button class="highScore">View High Scores</button>
+        <button class="highScore">View High Scores
+            <ul id="scoreList">
+            </ul>
+        </button>
         <h1>JavaScript Quiz Game</h1>
         <div id="timer"></div>
     </header>
@@ -24,10 +27,7 @@
             <button id="start-btn" class="pressStart btn">Start</button>
         </div>
 
-        <div id="showHighScores" class="hide">
-            <span id="scoreDisplay"></span>
-            <input type="text" name="initials" id="initials" />
-            <button id="submitScore" class="submit">Submit Score</button>
+        <div id="showHighScores" class="hide">         
         </div>
     </div>
     

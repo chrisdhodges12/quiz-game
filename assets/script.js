@@ -1,3 +1,4 @@
+///Quiz questions 
 var questions = [{
 
     question: "Which syntax is used when declaring a function?",
@@ -56,19 +57,17 @@ var highScoreButton = document.getElementById ("highScore")
 var showHighScores = document.getElementById ("showHighScores");
 
 //Variables
-var timeRemaining = 75; 
+var timeRemaining = 100; 
 var questionNumber;
 var initials = "";
-var score = 0;
+var scoreListItems = 0;
+var initials;
 var questionNUmber;
 var time;
+var scoreListItems = [];
 
-//local storage for high scores 
-var highScore = JSON.parse(localStorage.getItem("highScores"));
-
-//event listeners 
+//event listener to start
 startButton.addEventListener("click", startGame);
-showHighScores.addEventListener("click", displayScores);
 
 //function to begin game
 function startGame() {
@@ -141,44 +140,45 @@ function endGame() {
     startButton.classList.remove("hide"); 
     reset();
     showScore();
-
+    startButton.addEventListener("click", startGame);
+    timeRemaining = 100;
 }
  
 //shows your score = time remaining 
 function showScore() {
     var score = timeRemaining;
-    showHighScores.innerHTML = `Your score is ${timeRemaining}!<div id="init"> Name: <input type="text" name="initials" id="initials" placeholder="Enter Your Name"><button id="save-btn" class="save-btn btn" onclick="submitScores(event)" disabled>Save</button>`;
     questionEl.classList.add("hide")
     showHighScores.classList.remove("hide");
     answerButtons.classList.add("hide");
-    var initials = document.getElementById("initials");
-    var saveButton = document.getElementById("save-btn");
+    showHighScores.innerHTML = `Your score is ${score}!<div id="form">Initials: <input type="text" id="initials">
+    <button id="save-btn" class="btn">Save</button>
+    <div id="savedList" class="savedList"></div></div>`;
 }
+   
 
 // handles score submit into local storage
-function submitScore(e) {
-    var score = {
-    score: timeRemaining,
-    name: username.value
+function submitScore() {
+    var initials = document.getElementById("initials");
+    var saveForm = document.getElementById("savedList")
+
+    var scoreListItems = {
+        score: score,
+        initials: initials.value,
     };
-    highScore.push(score);
-    highScore.sort((a, b) => b.score - a.score);
-    
-    localStorage.setItem("highScores", JSON.stringify(highScore));
+
+    saveForm.push(scoreListItems);
+    localStorage.setItem("Your Score", JSON.stringify(scoreListItems));
+
+     //problem is here. Expect something to return in console but nothing happens.
+     console.log (scoreListItems);
+  
     displayScores();
 }
 
 //display score when called upon and at end of game 
 function displayScores() {
-    clearInterval(time);
-    reset();
-    questionEl.innerText = "";
-    showHighScores.innerHTML = `<h2>High Scores</h2><ul id="highScoresList"></ul>`
-    var highScoresList = document.getElementById("highScoresList");
-    highScoresList.innerHTML = highScore.map(score => {
-        return `<li class="scoresList">${score.name} - ${score.score}</li>`;
-    })
-    .join("");
+    questionEl.classList.remove("hide");
+    questionEl.innerHTML = JSON.parse(localStorage.getItem(scoreListItems));
 }
 
 startButton.classList.remove("hide");
